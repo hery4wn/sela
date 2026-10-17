@@ -1,0 +1,2 @@
+import { authenticate,json,failure,ApiError } from '../../../lib/server.mjs';
+export async function GET(request){try{const {db,user}=await authenticate(request);const start=new Date();start.setUTCHours(0,0,0,0);const {count,error}=await db.from('ai_requests').select('id',{count:'exact',head:true}).eq('user_id',user.id).gte('created_at',start.toISOString());if(error)throw new ApiError('Kuota belum dapat dibaca.',503);return json({used:count,limit:Number(process.env.AI_DAILY_LIMIT||20),resets:'00:00 UTC'});}catch(error){return failure(error);}}
