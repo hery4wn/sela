@@ -1,0 +1,20 @@
+node_modules/
+.next/
+.env*
+!.env.example
+*.log
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+# Local diagnostics and private collection exports
+patch-*.cjs
+patch-*.mjs
+*.apkg
+!tests/example.apkg
+*.colpkg
+*.db
+*.sqlite*
+*backup*.json
+docs/*.png
+docs/ANKI-PACKAGE-ASSESSMENT.md
+
